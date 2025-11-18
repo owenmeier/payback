@@ -110,9 +110,10 @@ Phase 1 - Basic structure setup complete:
 - ✅ Project structure
 - ✅ Backend API foundation
 - ✅ Frontend routing and context
-- ⏳ Receipt upload component
+- ✅ Receipt upload component
 - ⏳ GPT-4o integration
-- ⏳ Bill splitting interface
+- ✅ Bill splitting interface
+- ⏳ Assigning items to people
 - ⏳ Results display
 
 ## Contributing
