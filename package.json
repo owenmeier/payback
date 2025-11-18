@@ -1,0 +1,39 @@
+{
+	"name": "payback-monorepo",
+	"version": "1.0.0",
+	"private": true,
+	"description": "PayBack - Receipt splitting web application",
+	"scripts": {
+		"dev:backend": "cd backend && npm run dev",
+		"dev:frontend": "cd frontend && npm run dev",
+		"dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+		"build:backend": "cd backend && npm run build",
+		"build:frontend": "cd frontend && npm run build",
+		"build": "npm run build:backend && npm run build:frontend",
+		"install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+	},
+	"devDependencies": {
+		"concurrently": "^8.2.2"
+	},
+	"keywords": [
+		"receipt",
+		"splitting",
+		"bills",
+		"splitwise"
+	],
+	"author": "Owen Meier",
+	"license": "MIT",
+	"main": "index.js",
+	"directories": {
+		"doc": "docs"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/owenmeier/payback.git"
+	},
+	"type": "commonjs",
+	"bugs": {
+		"url": "https://github.com/owenmeier/payback/issues"
+	},
+	"homepage": "https://github.com/owenmeier/payback#readme"
+}

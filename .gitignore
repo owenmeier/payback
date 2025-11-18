@@ -40,6 +40,9 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -69,6 +72,8 @@ web_modules/
 .env
 .env.*
 !.env.example
+.env.local
+.env.*.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -137,3 +142,29 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Build output
+dist/
+build/
+
+# Uploaded files
+uploads/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Testing
+coverage/
+.nyc_output/
