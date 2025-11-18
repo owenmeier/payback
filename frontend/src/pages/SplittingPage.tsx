@@ -137,7 +137,7 @@ const SplittingPage: React.FC = () => {
 											<div className="mt-1 flex gap-1 justify-end">
 												{item.assignedTo.slice(0, 3).map((personId, idx) => (
 													<div
-														key={idx}
+														key={personId}
 														className="w-6 h-6 rounded-full bg-primary-500 text-white text-xs flex items-center justify-center"
 													>
 														{idx + 1}
