@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { ApiResponse, UploadResponse, ParseResponse } from "../types";
+import { USE_MOCK_API, mockUploadReceipt, mockParseReceipt } from "./mockApi";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
@@ -12,6 +13,12 @@ const api = axios.create({
 });
 
 export const uploadReceipt = async (file: File): Promise<UploadResponse> => {
+	// Use mock API in development
+	if (USE_MOCK_API) {
+		console.log("🎭 Using mock API for upload");
+		return mockUploadReceipt(file);
+	}
+
 	const formData = new FormData();
 	formData.append("receipt", file);
 
@@ -36,6 +43,12 @@ export const parseReceipt = async (
 	sessionId: string,
 	imageUrl: string
 ): Promise<ParseResponse> => {
+	// Use mock API in development
+	if (USE_MOCK_API) {
+		console.log("🎭 Using mock API for parsing");
+		return mockParseReceipt(sessionId, imageUrl);
+	}
+
 	const response = await api.post<ApiResponse<ParseResponse>>("/parse", {
 		sessionId,
 		imageUrl,

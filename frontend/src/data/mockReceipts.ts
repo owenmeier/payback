@@ -1,0 +1,323 @@
+import { Receipt } from "../types";
+
+export type MockReceiptType = "simple" | "restaurant" | "delivery" | "complex";
+
+export const mockReceipts: Record<MockReceiptType, Receipt> = {
+	simple: {
+		id: "receipt-1",
+		merchantName: "The Coffee Shop",
+		date: "2024-11-18",
+		items: [
+			{
+				id: "item-1",
+				description: "Cappuccino",
+				price: 5.5,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-2",
+				description: "Latte",
+				price: 6.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-3",
+				description: "Croissant",
+				price: 4.5,
+				quantity: 2,
+				assignedTo: [],
+			},
+		],
+		subtotal: 20.5,
+		tax: [
+			{
+				description: "Sales Tax",
+				amount: 1.64,
+			},
+		],
+		tip: 4.0,
+		fees: [],
+		total: 26.14,
+		createdAt: new Date("2024-11-18T10:30:00"),
+	},
+
+	restaurant: {
+		id: "receipt-2",
+		merchantName: "Bella Italia Restaurant",
+		date: "2024-11-17",
+		items: [
+			{
+				id: "item-1",
+				description: "Caesar Salad",
+				price: 12.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-2",
+				description: "Margherita Pizza",
+				price: 18.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-3",
+				description: "Spaghetti Carbonara",
+				price: 22.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-4",
+				description: "Penne Arrabbiata",
+				price: 19.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-5",
+				description: "Garlic Bread",
+				price: 8.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-6",
+				description: "House Wine (Glass)",
+				price: 9.0,
+				quantity: 3,
+				assignedTo: [],
+			},
+			{
+				id: "item-7",
+				description: "Tiramisu",
+				price: 10.0,
+				quantity: 2,
+				assignedTo: [],
+			},
+			{
+				id: "item-8",
+				description: "Espresso",
+				price: 4.0,
+				quantity: 2,
+				assignedTo: [],
+			},
+		],
+		subtotal: 129.0,
+		tax: [
+			{
+				description: "Sales Tax",
+				amount: 10.32,
+			},
+		],
+		tip: 25.8,
+		fees: [],
+		total: 165.12,
+		createdAt: new Date("2024-11-17T19:45:00"),
+	},
+
+	delivery: {
+		id: "receipt-3",
+		merchantName: "Sushi Express",
+		date: "2024-11-16",
+		items: [
+			{
+				id: "item-1",
+				description: "California Roll",
+				price: 12.5,
+				quantity: 2,
+				assignedTo: [],
+			},
+			{
+				id: "item-2",
+				description: "Spicy Tuna Roll",
+				price: 14.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-3",
+				description: "Salmon Nigiri (6pc)",
+				price: 16.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-4",
+				description: "Tempura Roll",
+				price: 13.5,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-5",
+				description: "Miso Soup",
+				price: 4.0,
+				quantity: 3,
+				assignedTo: [],
+			},
+			{
+				id: "item-6",
+				description: "Edamame",
+				price: 6.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+		],
+		subtotal: 82.0,
+		tax: [
+			{
+				description: "Sales Tax",
+				amount: 6.56,
+			},
+		],
+		tip: 12.3,
+		fees: [
+			{
+				description: "Delivery Fee",
+				amount: 4.99,
+			},
+			{
+				description: "Service Fee",
+				amount: 2.5,
+			},
+		],
+		total: 108.35,
+		createdAt: new Date("2024-11-16T20:15:00"),
+	},
+
+	complex: {
+		id: "receipt-4",
+		merchantName: "The Fancy Steakhouse",
+		date: "2024-11-15",
+		items: [
+			{
+				id: "item-1",
+				description: "Oysters Rockefeller",
+				price: 18.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-2",
+				description: "Lobster Bisque",
+				price: 14.0,
+				quantity: 2,
+				assignedTo: [],
+			},
+			{
+				id: "item-3",
+				description: "Ribeye Steak 16oz",
+				price: 58.0,
+				quantity: 2,
+				assignedTo: [],
+			},
+			{
+				id: "item-4",
+				description: "Filet Mignon 8oz",
+				price: 52.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-5",
+				description: "Grilled Salmon",
+				price: 38.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-6",
+				description: "Lamb Chops",
+				price: 45.0,
+				quantity: 1,
+				assignedTo: [],
+			},
+			{
+				id: "item-7",
+				description: "Truffle Mac & Cheese",
+				price: 16.0,
+				quantity: 2,
+				assignedTo: [],
+			},
+			{
+				id: "item-8",
+				description: "Asparagus",
+				price: 12.0,
+				quantity: 3,
+				assignedTo: [],
+			},
+			{
+				id: "item-9",
+				description: "Loaded Baked Potato",
+				price: 10.0,
+				quantity: 2,
+				assignedTo: [],
+			},
+			{
+				id: "item-10",
+				description: "Caesar Salad",
+				price: 14.0,
+				quantity: 2,
+				assignedTo: [],
+			},
+			{
+				id: "item-11",
+				description: "Cabernet Sauvignon (Bottle)",
+				price: 85.0,
+				quantity: 2,
+				assignedTo: [],
+			},
+			{
+				id: "item-12",
+				description: "Craft Cocktail",
+				price: 16.0,
+				quantity: 4,
+				assignedTo: [],
+			},
+			{
+				id: "item-13",
+				description: "Chocolate Lava Cake",
+				price: 14.0,
+				quantity: 3,
+				assignedTo: [],
+			},
+			{
+				id: "item-14",
+				description: "Crème Brûlée",
+				price: 12.0,
+				quantity: 2,
+				assignedTo: [],
+			},
+			{
+				id: "item-15",
+				description: "Coffee",
+				price: 5.0,
+				quantity: 4,
+				assignedTo: [],
+			},
+		],
+		subtotal: 623.0,
+		tax: [
+			{
+				description: "State Tax",
+				amount: 37.38,
+			},
+			{
+				description: "Local Tax",
+				amount: 12.46,
+			},
+		],
+		tip: 124.6,
+		fees: [
+			{
+				description: "Service Charge (18%)",
+				amount: 112.14,
+			},
+		],
+		total: 909.58,
+		createdAt: new Date("2024-11-15T21:00:00"),
+	},
+};
