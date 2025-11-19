@@ -1,12 +1,17 @@
 import { Router } from "express";
 import multer from "multer";
 import path from "path";
-import { v4 as uuidv4 } from "uuid";
+import crypto from "crypto";
 import { config } from "../config";
 import { validateFileUpload } from "../middleware/validation";
 import { AppError } from "../middleware/errorHandler";
 
 const router = Router();
+
+// Simple UUID generator using crypto (built-in to Node.js)
+const generateId = () => {
+	return crypto.randomBytes(16).toString("hex");
+};
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -14,7 +19,7 @@ const storage = multer.diskStorage({
 		cb(null, config.uploadDir);
 	},
 	filename: (req, file, cb) => {
-		const uniqueName = `${uuidv4()}${path.extname(file.originalname)}`;
+		const uniqueName = `${generateId()}${path.extname(file.originalname)}`;
 		cb(null, uniqueName);
 	},
 });
@@ -44,7 +49,7 @@ router.post(
 				throw new AppError("No file uploaded", 400);
 			}
 
-			const sessionId = uuidv4();
+			const sessionId = generateId();
 			const imageUrl = `/uploads/${req.file.filename}`;
 
 			// Store session data
