@@ -37,9 +37,9 @@ export const mockReceipts: Record<MockReceiptType, Receipt> = {
 				amount: 1.64,
 			},
 		],
-		tip: 4.0,
+		tip: 4.1,
 		fees: [],
-		total: 26.14,
+		total: 26.24,
 		createdAt: new Date("2024-11-18T10:30:00"),
 	},
 
@@ -105,16 +105,16 @@ export const mockReceipts: Record<MockReceiptType, Receipt> = {
 				assignedTo: [],
 			},
 		],
-		subtotal: 129.0,
+		subtotal: 134.0,
 		tax: [
 			{
 				description: "Sales Tax",
-				amount: 10.32,
+				amount: 10.72,
 			},
 		],
-		tip: 25.8,
+		tip: 26.8,
 		fees: [],
-		total: 165.12,
+		total: 171.52,
 		createdAt: new Date("2024-11-17T19:45:00"),
 	},
 
@@ -166,14 +166,14 @@ export const mockReceipts: Record<MockReceiptType, Receipt> = {
 				assignedTo: [],
 			},
 		],
-		subtotal: 82.0,
+		subtotal: 86.5,
 		tax: [
 			{
 				description: "Sales Tax",
-				amount: 6.56,
+				amount: 6.92,
 			},
 		],
-		tip: 12.3,
+		tip: 17.3,
 		fees: [
 			{
 				description: "Delivery Fee",
@@ -184,7 +184,7 @@ export const mockReceipts: Record<MockReceiptType, Receipt> = {
 				amount: 2.5,
 			},
 		],
-		total: 108.35,
+		total: 118.21,
 		createdAt: new Date("2024-11-16T20:15:00"),
 	},
 
@@ -299,25 +299,25 @@ export const mockReceipts: Record<MockReceiptType, Receipt> = {
 				assignedTo: [],
 			},
 		],
-		subtotal: 623.0,
+		subtotal: 644.0,
 		tax: [
 			{
 				description: "State Tax",
-				amount: 37.38,
+				amount: 38.64,
 			},
 			{
 				description: "Local Tax",
-				amount: 12.46,
+				amount: 12.88,
 			},
 		],
-		tip: 124.6,
+		tip: 128.8,
 		fees: [
 			{
 				description: "Service Charge (18%)",
-				amount: 112.14,
+				amount: 115.92,
 			},
 		],
-		total: 909.58,
+		total: 940.24,
 		createdAt: new Date("2024-11-15T21:00:00"),
 	},
 };

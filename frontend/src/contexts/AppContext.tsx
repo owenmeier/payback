@@ -90,26 +90,34 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
 				),
 			};
 
-		case "ASSIGN_ITEM":
+		case "ASSIGN_ITEM": {
 			if (!state.receipt) return state;
-			return {
+
+			const newState = {
 				...state,
 				receipt: {
 					...state.receipt,
-					items: state.receipt.items.map((item) =>
-						item.id === action.payload.itemId
-							? {
-									...item,
-									assignedTo: [...item.assignedTo, action.payload.personId],
-							  }
-							: item
-					),
+					items: state.receipt.items.map((item) => {
+						if (item.id !== action.payload.itemId) return item;
+
+						if (item.assignedTo.includes(action.payload.personId)) {
+							return item;
+						}
+
+						return {
+							...item,
+							assignedTo: [...item.assignedTo, action.payload.personId],
+						};
+					}),
 				},
 			};
+			return newState;
+		}
 
-		case "UNASSIGN_ITEM":
+		case "UNASSIGN_ITEM": {
+			console.log("🔴 UNASSIGN_ITEM called:", action.payload);
 			if (!state.receipt) return state;
-			return {
+			const unassignedState = {
 				...state,
 				receipt: {
 					...state.receipt,
@@ -125,6 +133,14 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
 					),
 				},
 			};
+			console.log(
+				"🔴 After UNASSIGN_ITEM:",
+				unassignedState.receipt?.items.find(
+					(i) => i.id === action.payload.itemId
+				)?.assignedTo
+			);
+			return unassignedState;
+		}
 
 		case "SET_SPLITS":
 			return { ...state, splits: action.payload };
