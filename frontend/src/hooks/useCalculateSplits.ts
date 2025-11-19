@@ -26,8 +26,6 @@ export const useCalculateSplits = (
 		});
 
 		// Calculate subtotals per person based on assigned items
-		let totalAssignedSubtotal = 0;
-
 		receipt.items.forEach((item) => {
 			if (item.assignedTo.length === 0) {
 				return; // Skip unassigned items
@@ -49,29 +47,34 @@ export const useCalculateSplits = (
 
 					splits[personId].items.push(assignedItem);
 					splits[personId].subtotal += splitPrice;
-					totalAssignedSubtotal += splitPrice;
 				}
 			});
 		});
 
-		// Distribute tax proportionally
+		// Calculate tax, tip, and fees as percentages of the original subtotal
 		const totalTax = receipt.tax.reduce((sum, tax) => sum + tax.amount, 0);
 		const totalFees = receipt.fees.reduce((sum, fee) => sum + fee.amount, 0);
+
+		// Calculate percentages based on receipt subtotal
+		const taxPercentage =
+			receipt.subtotal > 0 ? totalTax / receipt.subtotal : 0;
+		const tipPercentage =
+			receipt.subtotal > 0 ? receipt.tip / receipt.subtotal : 0;
+		const feePercentage =
+			receipt.subtotal > 0 ? totalFees / receipt.subtotal : 0;
 
 		Object.keys(splits).forEach((personId) => {
 			const split = splits[personId];
 
-			if (totalAssignedSubtotal > 0 && split.subtotal > 0) {
-				const proportion = split.subtotal / totalAssignedSubtotal;
-
-				// Distribute tax
-				split.taxAmount = totalTax * proportion;
+			if (split.subtotal > 0) {
+				// Apply percentages to each person's subtotal
+				split.taxAmount = split.subtotal * taxPercentage;
 
 				// Distribute tip
-				split.tipAmount = receipt.tip * proportion;
+				split.tipAmount = split.subtotal * tipPercentage;
 
 				// Distribute fees
-				split.feeAmount = totalFees * proportion;
+				split.feeAmount = split.subtotal * feePercentage;
 
 				// Calculate total
 				split.total =
