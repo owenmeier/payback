@@ -113,7 +113,7 @@ Phase 1 - Basic structure setup complete:
 - ✅ Receipt upload component
 - ⏳ GPT-4o integration
 - ✅ Bill splitting interface
-- ⏳ Assigning items to people
+- ✅ Assigning items to people
 - ⏳ Results display
 
 ## Contributing
