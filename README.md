@@ -105,7 +105,7 @@ VITE_APP_NAME=PayBack
 
 ## Current Status
 
-Phase 1 - Basic structure setup complete:
+Phase 1 - Basic structure setup complete: [Current Live State](https://payback-pi.vercel.app/)
 
 - ✅ Project structure
 - ✅ Backend API foundation
