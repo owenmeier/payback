@@ -50,6 +50,7 @@ export interface PersonSplit {
 export interface AssignedItem {
 	itemId: string;
 	description: string;
+	quantity: number;
 	fullPrice: number;
 	splitAmount: number; // If shared among multiple people
 	sharedWith: string[]; // Other person IDs

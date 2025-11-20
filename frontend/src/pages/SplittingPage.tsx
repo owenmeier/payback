@@ -77,9 +77,17 @@ const SplittingPage: React.FC = () => {
 				<div className="bg-white rounded-lg shadow-sm p-6">
 					<h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center justify-between">
 						<span>Receipt Items</span>
-						<span className="text-sm font-normal text-gray-500">
-							{state.receipt.items.length} items
-						</span>
+						<div className="flex items-center gap-4">
+							<button
+								onClick={() => navigate("/edit-items")}
+								className="px-3 py-1 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-md transition-colors"
+							>
+								← Back to Editing
+							</button>
+							<span className="text-sm font-normal text-gray-500">
+								{state.receipt.items.length} items
+							</span>
+						</div>
 					</h2>
 
 					{/* Receipt Summary */}
@@ -146,10 +154,11 @@ const SplittingPage: React.FC = () => {
 						← Back to Upload
 					</button>
 					<button
+						onClick={() => navigate("/results")}
 						disabled={state.people.length === 0}
 						className="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
 					>
-						Calculate Split →
+						View Results →
 					</button>
 				</div>
 			</div>

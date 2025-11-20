@@ -44,7 +44,7 @@ const UploadPage: React.FC = () => {
 			dispatch({ type: "SET_LOADING", payload: false });
 
 			// Navigate to splitting page
-			navigate("/split");
+			navigate("/edit-items");
 		} catch (err) {
 			const errorMessage =
 				err instanceof Error ? err.message : "An error occurred";
@@ -58,7 +58,7 @@ const UploadPage: React.FC = () => {
 
 	const handleUseMockData = () => {
 		// Quick test button to skip upload and use mock data directly
-		navigate("/split?mock=restaurant");
+		navigate("/splitting?mock=restaurant");
 	};
 
 	return (
