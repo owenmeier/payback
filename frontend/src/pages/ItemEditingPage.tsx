@@ -85,9 +85,12 @@ const ItemEditingPage: React.FC = () => {
 		if (itemIndex === -1) return;
 
 		const originalItem = items[itemIndex];
+		// Use edited quantity if it exists, otherwise use original quantity
+		const quantityToSplit = editedItems[itemId]?.quantity ?? originalItem.quantity;
+		
 		const newItems: ReceiptItem[] = [];
 
-		for (let i = 0; i < originalItem.quantity; i++) {
+		for (let i = 0; i < quantityToSplit; i++) {
 			newItems.push({
 				...originalItem,
 				id: `${originalItem.id}-split-${i}`,
@@ -103,6 +106,13 @@ const ItemEditingPage: React.FC = () => {
 		];
 
 		setItems(updatedItems);
+		
+		// Clear any edits for this item since we've split it
+		setEditedItems((prev) => {
+			const updated = { ...prev };
+			delete updated[itemId];
+			return updated;
+		});
 	};
 
 	// const handleMergeItems = (itemIds: string[]) => {

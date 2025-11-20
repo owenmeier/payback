@@ -67,9 +67,16 @@ const ChargesSection: React.FC<ChargesSectionProps> = ({
 								type="number"
 								min="0"
 								step="0.1"
-								value={inputValues["tax"]?.percentage ?? taxPercentage}
+								value={inputValues["tax"]?.percentage ?? Math.round(taxPercentage * 1000) / 1000}
 								onChange={(e) => {
-									const val = e.target.value;
+									let val = e.target.value;
+									// Limit to 3 decimal places
+									if (val && val.includes(".")) {
+										const parts = val.split(".");
+										if (parts[1].length > 3) {
+											val = parts[0] + "." + parts[1].substring(0, 3);
+										}
+									}
 									setInputValues((prev) => ({
 										...prev,
 										tax: { ...(prev["tax"] || {}), percentage: val },
@@ -144,9 +151,16 @@ const ChargesSection: React.FC<ChargesSectionProps> = ({
 								type="number"
 								min="0"
 								step="0.1"
-								value={inputValues["tip"]?.percentage ?? tipPercentage}
+								value={inputValues["tip"]?.percentage ?? Math.round(tipPercentage * 1000) / 1000}
 								onChange={(e) => {
-									const val = e.target.value;
+									let val = e.target.value;
+									// Limit to 3 decimal places
+									if (val && val.includes(".")) {
+										const parts = val.split(".");
+										if (parts[1].length > 3) {
+											val = parts[0] + "." + parts[1].substring(0, 3);
+										}
+									}
 									setInputValues((prev) => ({
 										...prev,
 										tip: { ...(prev["tip"] || {}), percentage: val },
@@ -221,9 +235,16 @@ const ChargesSection: React.FC<ChargesSectionProps> = ({
 								type="number"
 								min="0"
 								step="0.1"
-								value={inputValues["fees"]?.percentage ?? feesPercentage}
+								value={inputValues["fees"]?.percentage ?? Math.round(feesPercentage * 1000) / 1000}
 								onChange={(e) => {
-									const val = e.target.value;
+									let val = e.target.value;
+									// Limit to 3 decimal places
+									if (val && val.includes(".")) {
+										const parts = val.split(".");
+										if (parts[1].length > 3) {
+											val = parts[0] + "." + parts[1].substring(0, 3);
+										}
+									}
 									setInputValues((prev) => ({
 										...prev,
 										fees: { ...(prev["fees"] || {}), percentage: val },
