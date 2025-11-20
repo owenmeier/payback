@@ -86,8 +86,9 @@ const ItemEditingPage: React.FC = () => {
 
 		const originalItem = items[itemIndex];
 		// Use edited quantity if it exists, otherwise use original quantity
-		const quantityToSplit = editedItems[itemId]?.quantity ?? originalItem.quantity;
-		
+		const quantityToSplit =
+			editedItems[itemId]?.quantity ?? originalItem.quantity;
+
 		const newItems: ReceiptItem[] = [];
 
 		for (let i = 0; i < quantityToSplit; i++) {
@@ -106,7 +107,7 @@ const ItemEditingPage: React.FC = () => {
 		];
 
 		setItems(updatedItems);
-		
+
 		// Clear any edits for this item since we've split it
 		setEditedItems((prev) => {
 			const updated = { ...prev };
@@ -320,11 +321,27 @@ const ItemEditingPage: React.FC = () => {
 			description: getDisplayDescription(item),
 		}));
 
-		// Update receipt with new items and navigate to splitting
+		// Update receipt with new items, charges, and navigate to splitting
 		if (state.receipt) {
+			// Build updated tax array
+			const updatedTax = state.receipt.tax.map((t) => ({
+				...t,
+				amount: getTaxTotal(),
+			}));
+
 			dispatch({
 				type: "SET_RECEIPT",
-				payload: { ...state.receipt, items: updatedItems } as Receipt,
+				payload: {
+					...state.receipt,
+					items: updatedItems,
+					tax: updatedTax,
+					tip: getTipTotal(),
+					fees: state.receipt.fees.map((f) => ({
+						...f,
+						amount: getFeesTotal(),
+					})),
+					total: getItemsSubtotal() + getTaxTotal() + getTipTotal() + getFeesTotal(),
+				} as Receipt,
 			});
 			navigate("/splitting");
 		}

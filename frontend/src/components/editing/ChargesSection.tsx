@@ -67,7 +67,10 @@ const ChargesSection: React.FC<ChargesSectionProps> = ({
 								type="number"
 								min="0"
 								step="0.1"
-								value={inputValues["tax"]?.percentage ?? Math.round(taxPercentage * 1000) / 1000}
+								value={
+									inputValues["tax"]?.percentage ??
+									Math.round(taxPercentage * 1000) / 1000
+								}
 								onChange={(e) => {
 									let val = e.target.value;
 									// Limit to 3 decimal places
@@ -151,7 +154,10 @@ const ChargesSection: React.FC<ChargesSectionProps> = ({
 								type="number"
 								min="0"
 								step="0.1"
-								value={inputValues["tip"]?.percentage ?? Math.round(tipPercentage * 1000) / 1000}
+								value={
+									inputValues["tip"]?.percentage ??
+									Math.round(tipPercentage * 1000) / 1000
+								}
 								onChange={(e) => {
 									let val = e.target.value;
 									// Limit to 3 decimal places
@@ -235,7 +241,10 @@ const ChargesSection: React.FC<ChargesSectionProps> = ({
 								type="number"
 								min="0"
 								step="0.1"
-								value={inputValues["fees"]?.percentage ?? Math.round(feesPercentage * 1000) / 1000}
+								value={
+									inputValues["fees"]?.percentage ??
+									Math.round(feesPercentage * 1000) / 1000
+								}
 								onChange={(e) => {
 									let val = e.target.value;
 									// Limit to 3 decimal places

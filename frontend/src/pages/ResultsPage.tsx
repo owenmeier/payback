@@ -14,7 +14,7 @@ const ResultsPage: React.FC = () => {
 	useEffect(() => {
 		// Redirect if no receipt or no people
 		if (!state.receipt || state.people.length === 0) {
-			navigate("/split");
+			navigate("/splitting");
 		}
 	}, [state.receipt, state.people, navigate]);
 
@@ -316,7 +316,7 @@ const ResultsPage: React.FC = () => {
 				{/* Actions */}
 				<div className="flex flex-col sm:flex-row gap-4">
 					<button
-						onClick={() => navigate("/split")}
+						onClick={() => navigate("/splitting")}
 						className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors"
 					>
 						← Back to Edit
