@@ -340,7 +340,8 @@ const ItemEditingPage: React.FC = () => {
 						...f,
 						amount: getFeesTotal(),
 					})),
-					total: getItemsSubtotal() + getTaxTotal() + getTipTotal() + getFeesTotal(),
+					total:
+						getItemsSubtotal() + getTaxTotal() + getTipTotal() + getFeesTotal(),
 				} as Receipt,
 			});
 			navigate("/splitting");

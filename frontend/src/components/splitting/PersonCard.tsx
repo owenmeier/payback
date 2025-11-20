@@ -25,7 +25,9 @@ const PersonCard: React.FC<PersonCardProps> = ({
 	const colorIndex = PERSON_COLORS.findIndex((c) => c.name === person.color);
 	const color = colorIndex >= 0 ? PERSON_COLORS[colorIndex] : PERSON_COLORS[0];
 
-	const itemCount = split?.items.length || 0;
+	// Calculate total quantity assigned to this person
+	const itemCount =
+		split?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
 	const total = split?.total || 0;
 
 	const handleSaveName = () => {

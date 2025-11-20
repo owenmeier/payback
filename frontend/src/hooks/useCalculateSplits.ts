@@ -40,6 +40,7 @@ export const useCalculateSplits = (
 					const assignedItem: AssignedItem = {
 						itemId: item.id,
 						description: item.description,
+						quantity: item.quantity,
 						fullPrice: totalItemPrice,
 						splitAmount: splitPrice,
 						sharedWith: item.assignedTo.filter((id) => id !== personId),

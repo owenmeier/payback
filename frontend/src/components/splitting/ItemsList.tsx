@@ -16,6 +16,17 @@ const ItemsList: React.FC = () => {
 		(item) => item.assignedTo.length > 0
 	);
 
+	// Calculate total quantities for unassigned and assigned items
+	const unassignedQuantity = unassignedItems.reduce(
+		(sum, item) => sum + item.quantity,
+		0
+	);
+	const assignedQuantity = assignedItems.reduce(
+		(sum, item) => sum + item.quantity,
+		0
+	);
+	const totalQuantity = unassignedQuantity + assignedQuantity;
+
 	const selectedPerson = state.people.find(
 		(p) => p.id === state.selectedPersonId
 	);
@@ -54,11 +65,11 @@ const ItemsList: React.FC = () => {
 			<div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
 				<div className="flex justify-between text-sm">
 					<span className="text-gray-600">
-						Assigned: {assignedItems.length} of {state.receipt.items.length}
+						Assigned: {assignedQuantity} of {totalQuantity}
 					</span>
-					{unassignedItems.length > 0 && (
+					{unassignedQuantity > 0 && (
 						<span className="text-orange-600 font-medium">
-							{unassignedItems.length} unassigned
+							{unassignedQuantity} unassigned
 						</span>
 					)}
 				</div>
