@@ -3,6 +3,7 @@ import { AppProvider } from "./contexts/AppContext";
 import UploadPage from "./pages/UploadPage";
 import SplittingPage from "./pages/SplittingPage";
 import ResultsPage from "./pages/ResultsPage";
+import ItemEditingPage from "./pages/ItemEditingPage";
 
 function App() {
 	return (
@@ -10,7 +11,8 @@ function App() {
 			<Router>
 				<Routes>
 					<Route path="/" element={<UploadPage />} />
-					<Route path="/split" element={<SplittingPage />} />
+					<Route path="/edit-items" element={<ItemEditingPage />} />
+					<Route path="/splitting" element={<SplittingPage />} />
 					<Route path="/results" element={<ResultsPage />} />
 				</Routes>
 			</Router>

@@ -146,10 +146,11 @@ const SplittingPage: React.FC = () => {
 						← Back to Upload
 					</button>
 					<button
+						onClick={() => navigate("/results")}
 						disabled={state.people.length === 0}
 						className="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
 					>
-						Calculate Split →
+						View Results →
 					</button>
 				</div>
 			</div>
