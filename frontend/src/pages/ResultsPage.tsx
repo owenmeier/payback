@@ -58,6 +58,19 @@ const ResultsPage: React.FC = () => {
 		(item) => item.assignedTo.length === 0
 	);
 
+	// Calculate quantities for assigned and unassigned
+	const assignedQuantity = state.receipt.items.reduce((sum, item) => {
+		if (item.assignedTo.length > 0) {
+			return sum + item.quantity;
+		}
+		return sum;
+	}, 0);
+	const unassignedQuantity = unassignedItems.reduce(
+		(sum, item) => sum + item.quantity,
+		0
+	);
+	const totalQuantity = assignedQuantity + unassignedQuantity;
+
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50 p-4">
 			<div className="max-w-4xl mx-auto">
@@ -104,15 +117,15 @@ const ResultsPage: React.FC = () => {
 							{state.people.length === 1 ? "person" : "people"}
 						</p>
 					</div>
-					<div className="bg-white rounded-lg shadow-md p-6 text-center">
-						<p className="text-sm text-gray-600 mb-1">Items Assigned</p>
-						<p className="text-3xl font-bold text-green-600">
-							{state.receipt.items.length - unassignedItems.length}
-						</p>
-						<p className="text-xs text-gray-500 mt-1">
-							of {state.receipt.items.length} items
-						</p>
-					</div>
+				<div className="bg-white rounded-lg shadow-md p-6 text-center">
+					<p className="text-sm text-gray-600 mb-1">Items Assigned</p>
+					<p className="text-3xl font-bold text-green-600">
+						{assignedQuantity}
+					</p>
+					<p className="text-xs text-gray-500 mt-1">
+						of {totalQuantity} items
+					</p>
+				</div>
 				</div>
 
 				{/* Unassigned Items Warning */}
@@ -132,11 +145,11 @@ const ResultsPage: React.FC = () => {
 									/>
 								</svg>
 							</div>
-							<div className="ml-3">
-								<p className="text-sm text-orange-800 font-medium">
-									{unassignedItems.length} item
-									{unassignedItems.length > 1 ? "s" : ""} not assigned
-								</p>
+						<div className="ml-3">
+							<p className="text-sm text-orange-800 font-medium">
+								{unassignedQuantity} item
+								{unassignedQuantity > 1 ? "s" : ""} not assigned
+							</p>
 								<p className="text-xs text-orange-700 mt-1">
 									These items are not included in the split calculation
 								</p>
@@ -178,10 +191,10 @@ const ResultsPage: React.FC = () => {
 												<h3 className="text-xl font-bold text-gray-900">
 													{split.personName}
 												</h3>
-												<p className="text-sm text-gray-600">
-													{split.items.length} item
-													{split.items.length !== 1 ? "s" : ""}
-												</p>
+											<p className="text-sm text-gray-600">
+												{split.items.reduce((sum, item) => sum + item.quantity, 0)} item
+												{split.items.reduce((sum, item) => sum + item.quantity, 0) !== 1 ? "s" : ""}
+											</p>
 											</div>
 										</div>
 										<div className="text-right">

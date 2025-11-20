@@ -58,7 +58,7 @@ const UploadPage: React.FC = () => {
 
 	const handleUseMockData = () => {
 		// Quick test button to skip upload and use mock data directly
-		navigate("/split?mock=restaurant");
+		navigate("/splitting?mock=restaurant");
 	};
 
 	return (
